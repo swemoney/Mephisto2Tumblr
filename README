@@ -1,0 +1,25 @@
+Mephisto2Tumblr
+Revision: 1
+
+Requires: rubygems, active_record
+Optional: RedCloth
+Tested with: Ruby 1.8.7, Mephisto database 0.8.2
+
+Mephisto2Tumblr will take an old Mephisto database, extract the articles and upload them to 
+a Tumblr account. It uses the database by itself so you don't need a functional Mephisto 
+instance running. If you have the RedCloth gem installed, it will take care of converting 
+your Textile formatted posts (which are not supported by Tumblr) into HTML. Excerpts are 
+also converted over to Tumblr format.
+
+Very simple to use. Open up the script in your favorite text editor and plug in all the 
+information needed at the top of the script. Then..
+
+$ chmod +x m2t.rb
+$ ./m2t.rb
+
+You'll see it doing it's thing and when it's finally done, it will generate a file with 
+rewrite rules in it if you would like to forward the links from your old blog to the 
+new one.
+
+You are free to edit and distribute this script to your hearts content. A quick "credit" 
+would be great if you intend on redistributing.

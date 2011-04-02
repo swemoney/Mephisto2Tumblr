@@ -11,27 +11,23 @@
 # author: Steve Ehrenberg
 # email : steve@dnite.org
 # 
+# Tested on: Ruby 1.8.7 with a Mephisto database 0.8.2
 
 require 'rubygems'
 require 'active_record'
 require 'net/http'
 require 'RedCloth' if Gem.available?('RedCloth')
 
-# Your old (Mephisto) blog's base URL (no trailing /)
-OLD_BLOG_URL = "http://old_mephisto_blog_url.com"
-
-# Your new blog's URL on tumblr (i.e. http://swemoney.tumblr.com or http://swemoney.com)
+# Mephisto2Tumblr will generate a file of rewrite rules for keeping your old links forwarding to 
+# the new Tumblr blog. (Currently only supports Mephisto's /yyyy/mm/dd/slug URL format)
 NEW_BLOG_URL = "http://new_tumblr_blog_url.com"
-
-# A file will be written and populated with rewrite rules for NGINX to redirect to your new blog.
-# Currently, this only supports mephisto with a yyyy/mm/dd/slug URL format
 REWRITE_FILENAME = "rewrite_rules"
 
-# Tumblr Information
+# Fill in your Tumblr email address and password here
 TUMBLR_EMAIL =    "tumblr_email@domain.com"
 TUMBLR_PASSWORD = "tumblrpassword"
 
-# Database Information
+# Database Information (Only tested with Postgresql, but I'd assume it works with MySQL too?)
 DB_ADAPTER  = "postgresql"
 DB_USERNAME = "database_user"
 DB_PASSWORD = "databasepassword"
@@ -40,6 +36,11 @@ DB_HOST     = "localhost"
 
 # How long should we pause after each request to Tumblr?
 SLEEP_TIME = 2
+
+#################################################################################################
+# You shouldn't have to edit below here but feel free to if you need to tweak anything for 
+# your specific Mephisto or database configuration
+#################################################################################################
 
 # Make the connection to the database
 ActiveRecord::Base.establish_connection(:adapter =>"#{DB_ADAPTER}",:host =>"#{DB_HOST}",:database =>"#{DB_DATABASE}",:username =>"#{DB_USERNAME}",:password =>"#{DB_PASSWORD}")
