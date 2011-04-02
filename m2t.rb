@@ -129,7 +129,7 @@ puts "Creating Rewrite file for NGINX: #{REWRITE_FILENAME}"
 File.open(REWRITE_FILENAME, 'w') do |file|
   f.puts "location / {"
   tumblr_ids.each do |article|
-    file.puts "    rewrite ^/#{article[:date].year}/#{article[:date].month}/#{article[:date].day}/#{article[:slug]}$ #{NEW_BLOG_URL}/#{article[:tumblr_id]}/#{article[:slug]} permanent"
+    file.puts "    rewrite ^/#{article[:date].year}/#{article[:date].month}/#{article[:date].day}/#{article[:slug]}$ #{NEW_BLOG_URL}/#{article[:tumblr_id]}/#{article[:slug]} permanent;"
   end
   f.puts "}"
 end
